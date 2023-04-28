@@ -1,8 +1,10 @@
 <?php
 
-namespace BeyondCode\LaravelMaskedDumper\ColumnDefinitions;
+declare(strict_types=1);
 
-use BeyondCode\LaravelMaskedDumper\Contracts\Column;
+namespace RamosHenrique\LaravelMaskedDumper\ColumnDefinitions;
+
+use RamosHenrique\LaravelMaskedDumper\Contracts\Column;
 use Faker\Factory;
 
 class ReplacedColumn implements Column

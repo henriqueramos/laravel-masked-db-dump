@@ -1,9 +1,11 @@
 <?php
 
-namespace BeyondCode\LaravelMaskedDumper\Console;
+declare(strict_types=1);
+
+namespace RamosHenrique\LaravelMaskedDumper\Console;
 
 use Illuminate\Console\Command;
-use BeyondCode\LaravelMaskedDumper\LaravelMaskedDump;
+use RamosHenrique\LaravelMaskedDumper\LaravelMaskedDump;
 
 class DumpDatabaseCommand extends Command
 {

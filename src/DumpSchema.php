@@ -1,10 +1,12 @@
 <?php
 
-namespace BeyondCode\LaravelMaskedDumper;
+declare(strict_types=1);
+
+namespace RamosHenrique\LaravelMaskedDumper;
 
 use Faker\Factory;
 use Doctrine\DBAL\Schema\Table;
-use BeyondCode\LaravelMaskedDumper\TableDefinitions\TableDefinition;
+use RamosHenrique\LaravelMaskedDumper\TableDefinitions\TableDefinition;
 use Illuminate\Support\Facades\DB;
 
 class DumpSchema
@@ -52,7 +54,10 @@ class DumpSchema
      */
     public function getConnection()
     {
-        return DB::connection($this->connectionName);
+        $connection = DB::connection($this->connectionName);
+        $connection->getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
+
+        return $connection;
     }
 
     protected function getTable(string $tableName)
@@ -62,7 +67,7 @@ class DumpSchema
         });
 
         if (is_null($table)) {
-            throw new \Exception("Invalid table name ${tableName}");
+            throw new \Exception("Invalid table name " . $tableName);
         }
 
         return $table;

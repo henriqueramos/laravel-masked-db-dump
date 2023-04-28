@@ -1,9 +1,9 @@
 <?php
 
-namespace BeyondCode\LaravelMaskedDumper\TableDefinitions;
+namespace RamosHenrique\LaravelMaskedDumper\TableDefinitions;
 
-use BeyondCode\LaravelMaskedDumper\Contracts\Column;
-use BeyondCode\LaravelMaskedDumper\ColumnDefinitions\ColumnDefinition;
+use RamosHenrique\LaravelMaskedDumper\Contracts\Column;
+use RamosHenrique\LaravelMaskedDumper\ColumnDefinitions\ColumnDefinition;
 use Doctrine\DBAL\Schema\Table;
 
 class TableDefinition

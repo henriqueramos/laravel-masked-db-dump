@@ -1,11 +1,13 @@
 <?php
 
-namespace BeyondCode\LaravelMaskedDumper;
+declare(strict_types=1);
+
+namespace RamosHenrique\LaravelMaskedDumper;
 
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\Schema\Schema;
 use Illuminate\Console\OutputStyle;
-use BeyondCode\LaravelMaskedDumper\TableDefinitions\TableDefinition;
+use RamosHenrique\LaravelMaskedDumper\TableDefinitions\TableDefinition;
 
 class LaravelMaskedDump
 {
@@ -21,11 +23,13 @@ class LaravelMaskedDump
         $this->output = $output;
     }
 
-    public function dump()
+    public function dump(): string
     {
         $tables = $this->definition->getDumpTables();
 
         $query = '';
+
+        $query .= $this->disableStrictChecks($query);
 
         $overallTableProgress = $this->output->createProgressBar(count($tables));
 
@@ -43,6 +47,8 @@ class LaravelMaskedDump
 
             $overallTableProgress->advance();
         }
+
+        $query .= $this->enableStrictChecks($query);
 
         return $query;
     }
@@ -68,7 +74,7 @@ class LaravelMaskedDump
         })->toArray();
     }
 
-    protected function dumpSchema(TableDefinition $table)
+    protected function dumpSchema(TableDefinition $table): string
     {
         $platform = $this->definition->getConnection()->getDoctrineSchemaManager()->getDatabasePlatform();
 
@@ -77,19 +83,19 @@ class LaravelMaskedDump
         return implode(";", $schema->toSql($platform)) . ";" . PHP_EOL;
     }
 
-    protected function lockTable(string $tableName)
+    protected function lockTable(string $tableName): string
     {
         return "LOCK TABLES `$tableName` WRITE;" . PHP_EOL .
             "ALTER TABLE `$tableName` DISABLE KEYS;" . PHP_EOL;
     }
 
-    protected function unlockTable(string $tableName)
+    protected function unlockTable(string $tableName): string
     {
         return "ALTER TABLE `$tableName` ENABLE KEYS;" . PHP_EOL .
             "UNLOCK TABLES;" . PHP_EOL;
     }
 
-    protected function dumpTableData(TableDefinition $table)
+    protected function dumpTableData(TableDefinition $table): string
     {
         $query = '';
 
@@ -103,7 +109,7 @@ class LaravelMaskedDump
                 $row = $this->transformResultForInsert((array)$row, $table);
                 $tableName = $table->getDoctrineTable()->getName();
 
-                $query .= "INSERT INTO `${tableName}` (`" . implode('`, `', array_keys($row)) . '`) VALUES ';
+                $query .= "INSERT INTO `" . $tableName. "` (`" . implode('`, `', array_keys($row)) . '`) VALUES ';
                 $query .= "(";
 
                 $firstColumn = true;
@@ -120,4 +126,17 @@ class LaravelMaskedDump
 
         return $query;
     }
+
+    protected function disableStrictChecks(string $query): string
+    {
+        return "SET unique_checks=0;" . PHP_EOL .
+            "SET FOREIGN_KEY_CHECKS=0;" . PHP_EOL;
+    }
+
+    protected function enableStrictChecks(string $query): string
+    {
+        return "SET unique_checks=1;" . PHP_EOL .
+            "SET FOREIGN_KEY_CHECKS=1;" . PHP_EOL;
+    }
+
 }

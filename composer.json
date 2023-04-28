@@ -1,46 +1,46 @@
 {
-    "name": "beyondcode/laravel-masked-db-dump",
-    "description": "Dump masked information from your database",
+    "name": "henriqueramos/laravel-masked-db-dump",
+    "description": "For Laravel 10, dump masked information from your database. Forked from BeyondCode.",
     "keywords": [
         "beyondcode",
+        "henriqueramos",
+        "laravelv10",
         "laravel-masked-db-dump"
     ],
-    "homepage": "https://github.com/beyondcode/laravel-masked-db-dump",
+    "homepage": "https://github.com/henriqueramos/laravel-masked-db-dump",
     "license": "MIT",
     "authors": [
         {
-            "name": "Marcel Pociot",
-            "email": "marcel@beyondco.de",
-            "homepage": "https://beyondcode.de",
+            "name": "Henrique Ramos",
+            "email": "henrique@henriqueramos.eti.br",
+            "homepage": "https://github.com/henriqueramos",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.3 || ^8.0",
-        "doctrine/dbal": "^2.0|^3.0",
-        "fakerphp/faker": "^1.13",
-        "illuminate/console": "^7.0|^8.0",
-        "illuminate/support": "^7.0|^8.0"
+        "php": "^8.0",
+        "doctrine/dbal": "^3.0",
+        "fakerphp/faker": "^1.20",
+        "illuminate/console": "^10",
+        "illuminate/support": "^10"
     },
     "require-dev": {
-        "orchestra/testbench": "^6.12",
-        "phpunit/phpunit": "^8.0",
-        "spatie/phpunit-snapshot-assertions": "^4.2"
+        "orchestra/testbench": "^8",
+        "phpunit/phpunit": "^10",
+        "spatie/phpunit-snapshot-assertions": "^5"
     },
     "autoload": {
         "psr-4": {
-            "BeyondCode\\LaravelMaskedDumper\\": "src"
+            "RamosHenrique\\LaravelMaskedDumper\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BeyondCode\\LaravelMaskedDumper\\Tests\\": "tests"
+            "RamosHenrique\\LaravelMaskedDumper\\Tests\\": "tests"
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
-
+        "test": "vendor/bin/phpunit -d --update-snapshots"
     },
     "config": {
         "sort-packages": true
@@ -48,7 +48,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BeyondCode\\LaravelMaskedDumper\\LaravelMaskedDumpServiceProvider"
+                "RamosHenrique\\LaravelMaskedDumper\\LaravelMaskedDumpServiceProvider"
             ]
         }
     }

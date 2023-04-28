@@ -1,12 +1,13 @@
 <?php
 
-namespace BeyondCode\LaravelMaskedDumper\Tests;
+declare(strict_types=1);
 
-use BeyondCode\LaravelMaskedDumper\DumpSchema;
-use BeyondCode\LaravelMaskedDumper\LaravelMaskedDumpServiceProvider;
-use BeyondCode\LaravelMaskedDumper\TableDefinitions\TableDefinition;
+namespace RamosHenrique\LaravelMaskedDumper\Tests;
+
+use RamosHenrique\LaravelMaskedDumper\DumpSchema;
+use RamosHenrique\LaravelMaskedDumper\LaravelMaskedDumpServiceProvider;
+use RamosHenrique\LaravelMaskedDumper\TableDefinitions\TableDefinition;
 use Faker\Generator;
-use Illuminate\Auth\Authenticatable;
 use Illuminate\Support\Facades\DB;
 use Orchestra\Testbench\TestCase;
 use Spatie\Snapshots\MatchesSnapshots;

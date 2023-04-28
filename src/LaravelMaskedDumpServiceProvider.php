@@ -1,8 +1,10 @@
 <?php
 
-namespace BeyondCode\LaravelMaskedDumper;
+declare(strict_types=1);
 
-use BeyondCode\LaravelMaskedDumper\Console\DumpDatabaseCommand;
+namespace RamosHenrique\LaravelMaskedDumper;
+
+use RamosHenrique\LaravelMaskedDumper\Console\DumpDatabaseCommand;
 use Illuminate\Support\ServiceProvider;
 
 class LaravelMaskedDumpServiceProvider extends ServiceProvider
