@@ -1,38 +1,22 @@
 # Laravel Masked DB Dump
 
-A database dumping package that allows you to replace and mask columns while dumping your database.
-
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/beyondcode/laravel-masked-db-dump.svg?style=flat-square)](https://packagist.org/packages/beyondcode/laravel-masked-db-dump)
-[![Total Downloads](https://img.shields.io/packagist/dt/beyondcode/laravel-masked-db-dump.svg?style=flat-square)](https://packagist.org/packages/beyondcode/laravel-masked-db-dump)
-
+This is a fork of [Laravel Masked DB Dump](https://beyondco.de/docs/laravel-masked-db-dump), with some fixes in place, allowing it to run on Laravel v10 instances.
 ## Installation
 
-You can install the package via composer:
-
-```bash
-composer require beyondcode/laravel-masked-db-dump
-```
+You can install it using [Composer's Repositories attributes](https://getcomposer.org/doc/05-repositories.md#git-alternatives).
 
 ## Documentation
 
-The documentation can be found on [our website](https://beyondco.de/docs/laravel-masked-db-dump).
-
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+The original documentation can be found on [Beyond Code site](https://beyondco.de/docs/laravel-masked-db-dump).
 
 ### Security
 
-If you discover any security related issues, please email marcel@beyondco.de instead of using the issue tracker.
+If you discover any security related issues, please email henrique@henriqueramos.eti.br instead of using the issue tracker.
 
 ## Credits
 
 - [Marcel Pociot](https://github.com/mpociot)
-- [All Contributors](../../contributors)
+- [Henrique Ramos](https://github.com/henriqueramos)
 
 ## License
 
